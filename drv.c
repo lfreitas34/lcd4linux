@@ -79,6 +79,7 @@ extern DRIVER drv_MilfordInstruments;
 extern DRIVER drv_Newhaven;
 extern DRIVER drv_Noritake;
 extern DRIVER drv_NULL;
+extern DRIVER drv_pcd8544;
 extern DRIVER drv_Pertelian;
 extern DRIVER drv_PHAnderson;
 extern DRIVER drv_PICGraphic;
@@ -205,6 +206,9 @@ DRIVER *Driver[] = {
 #endif
 #ifdef WITH_NULL
     &drv_NULL,
+#endif
+#ifdef WITH_PCD8544
+    &drv_pcd8544,
 #endif
 #ifdef WITH_PERTELIAN
     &drv_Pertelian,

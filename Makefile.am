@@ -105,6 +105,7 @@ drv_MilfordInstruments.c      \
 drv_Newhaven.c                \
 drv_Noritake.c                \
 drv_NULL.c                    \
+drv_pcd8544.c                 \
 drv_Pertelian.c               \
 drv_PHAnderson.c              \
 drv_PICGraphic.c              \

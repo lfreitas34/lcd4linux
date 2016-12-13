@@ -581,6 +581,16 @@ Display FutabaVFD {
     }
 }
 
+Display pcd8544 {
+    Driver    'pcd8544'
+    Port      '/dev/spidev0.0'
+#    Contrast  8
+# these could be automatic
+    Size      '84x48'
+#    Speed     1000000
+    Font      '6x8'
+}
+
 
 #Plugin KVV {
 #    StationID '12_701'

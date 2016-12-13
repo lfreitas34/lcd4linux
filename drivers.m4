@@ -36,7 +36,7 @@ AC_ARG_WITH(
   [                        EA232graphic, EFN, FutabaVFD, FW8888, G15, GLCD2USB, HD44780, HD44780-I2C,]
   [                        IRLCD, LCD2USB, LCDLinux, LEDMatrix, LCDTerm, LPH7508, LUIse,]
   [                        LW_ABP, M50530, MatrixOrbital, MatrixOrbitalGX, MilfordInstruments, MDM166A,]
-  [                        Newhaven, Noritake, NULL, Pertelian, PHAnderson,]
+  [                        Newhaven, Noritake, NULL, pcd8544, Pertelian, PHAnderson,]
   [                        PICGraphic, picoLCD, picoLCDGraphic, PNG, PPM, RouterBoard,]
   [                        Sample, SamsungSPF, serdisplib, ShuttleVFD, SimpleLCD, st2205, T6963,]
   [                        TeakLCM, Trefon, ULA200, USBHUB, USBLCD, VNC, WincorNixdorf, X11],
@@ -92,6 +92,7 @@ for driver in $drivers; do
          NEWHAVEN="yes"
          NORITAKE="yes"
          NULL="yes"
+         PCD8544="yes"
          PERTELIAN="yes"
          PHANDERSON="yes"
          PICGRAPHIC="yes"
@@ -211,6 +212,9 @@ for driver in $drivers; do
          ;;
       NULL)
          NULL=$val;
+         ;;
+      pcd8544)
+         PCD8544=$val;
          ;;
       Pertelian)
          PERTELIAN=$val
@@ -874,6 +878,17 @@ if test "$X11" = "yes"; then
       fi
       CPP_FLAGS="$CPPFLAGS $X_CFLAGS"
       AC_DEFINE(WITH_X11, 1, [X11 driver])
+   fi
+fi
+
+if test "$PCD8544" = "yes"; then
+   if test "$has_spidev" = "true"; then
+      GRAPHIC="yes"
+      SPIDEV="yes"
+      DRIVERS="$DRIVERS drv_pcd8544.o"
+      AC_DEFINE(WITH_PCD8544,1,[pcd8544 driver])
+   else
+      AC_MSG_WARN(linux/spi/spidev.h not found: pcd8544 driver disabled)
    fi
 fi
 
