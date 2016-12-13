@@ -301,6 +301,7 @@ PARPORT="no"
 SERIAL="no"
 I2C="no"
 KEYPAD="no"
+SPIDEV="no"
 
 # generic libraries
 LIBUSB="no"
@@ -934,6 +935,12 @@ fi
 # libjpeg
 if test "$LIBJPEG" = "yes"; then
    DRVLIBS="$DRVLIBS -ljpeg"
+fi
+
+# generic spidev driver
+if test "$SPIDEV" = "yes"; then
+   DRIVERS="$DRIVERS drv_generic_spidev.o"
+   AC_DEFINE(WITH_SPIDEV, 1, [SPIDEV driver])
 fi
 
 # libusb
